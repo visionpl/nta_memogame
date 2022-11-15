@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+body {
+  background: #fbf7ed;
+}
+
+.game_title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+h1.game_title {
+  color: #808cad;
+  font-size: 3.5rem;
+  font-family: "Permanent Marker", cursive;
+}
+
+h1.game_title span {
+  color: #ffffff;
+  -webkit-text-stroke: 1px #808cad;
+  font-size: 3.5rem;
+  font-family: "Permanent Marker", cursive;
+}
+
+.container {
+  margin: auto;
+  width: 60%;
+  padding: 0px 25px;
+}
+
+.game_box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card {
+  display: flex;
+  width: 150px;
+  flex: 0 20%;
+  margin: 10px;
+  background-color: #808cad;
+  border: 8px solid #ffffff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 42px -19px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 42px -19px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 42px -19px rgba(66, 68, 90, 1);
+}
+
+.card img {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+img.hidden {
+  opacity: 0;
+}
+
+@media screen and (max-width: 922px) {
+  .container {
+    width: 90%;
+  }
+}
