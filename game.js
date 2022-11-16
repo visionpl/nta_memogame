@@ -10,7 +10,8 @@ const images = [
 ];
 
 const cards = document.querySelectorAll(".card");
-let = clickedArray = [];
+const clickedArray = [];
+let moves = 0;
 
 cards.forEach((card) => {
   randomNumberPosition = Math.floor(Math.random() * images.length);
@@ -46,6 +47,11 @@ cards.forEach((card) => {
         });
         clickedArray.length = 0;
       }
+
+      moves++;
     }
+
+    document.querySelector(".navbar span").innerHTML = moves;
   });
+  console.log(cards);
 });
