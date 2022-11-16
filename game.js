@@ -10,6 +10,7 @@ const images = [
 ];
 
 const cards = document.querySelectorAll(".card");
+let = clickedArray = [];
 
 cards.forEach((card) => {
   randomNumberPosition = Math.floor(Math.random() * images.length);
@@ -21,5 +22,30 @@ cards.forEach((card) => {
 
   card.addEventListener("click", function () {
     image.classList.remove("hidden");
+
+    clickedArray.push(this);
+
+    if (clickedArray.length === 2) {
+      if (
+        clickedArray[0].querySelector("img").getAttribute("src") ===
+        clickedArray[1].querySelector("img").getAttribute("src")
+      ) {
+        clickedArray.forEach((el) => {
+          setTimeout(() => {
+            el.remove();
+          }, 500);
+        });
+
+        //FIXME: klikniecie dwa razy na ta sama karte powoduje dopasowanie
+        clickedArray.length = 0;
+      } else {
+        clickedArray.forEach((el) => {
+          setTimeout(() => {
+            el.querySelector("img").setAttribute("class", "hidden");
+          }, 500);
+        });
+        clickedArray.length = 0;
+      }
+    }
   });
 });
