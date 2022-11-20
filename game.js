@@ -11,7 +11,9 @@ const images = [
 
 const cards = document.querySelectorAll(".card");
 const clickedArray = [];
+const matchArray = [];
 let moves = 0;
+let matched = 0;
 
 cards.forEach((card) => {
   randomNumberPosition = Math.floor(Math.random() * images.length);
@@ -21,37 +23,58 @@ cards.forEach((card) => {
   image.setAttribute("class", "hidden");
   card.appendChild(image);
 
-  card.addEventListener("click", function () {
-    image.classList.remove("hidden");
+  card.addEventListener("click", clickCard);
 
+  function clickCard() {
+    image.classList.remove("hidden");
     clickedArray.push(this);
 
     if (clickedArray.length === 2) {
-      if (
+      isPair =
         clickedArray[0].querySelector("img").getAttribute("src") ===
-        clickedArray[1].querySelector("img").getAttribute("src")
-      ) {
+        clickedArray[1].querySelector("img").getAttribute("src");
+
+      isShapeDoubleClicked =
+        clickedArray[0].getAttribute("id") ===
+        clickedArray[1].getAttribute("id");
+
+      if (isPair && !isShapeDoubleClicked) {
         clickedArray.forEach((el) => {
-          setTimeout(() => {
-            el.remove();
-          }, 500);
+          el.classList.add("zoom-card");
+          card.removeEventListener("click", el);
+
+          if (!matchArray.includes(el.getAttribute("id"))) {
+            matchArray.push(el.getAttribute("id"));
+            matched++;
+          }
         });
 
-        //FIXME: klikniecie dwa razy na ta sama karte powoduje dopasowanie
+        clickedArray.length = 0;
+        moves++;
+      } else if (isPair && isShapeDoubleClicked) {
         clickedArray.length = 0;
       } else {
         clickedArray.forEach((el) => {
+          el.classList.add("shake-box");
+
           setTimeout(() => {
             el.querySelector("img").setAttribute("class", "hidden");
+            el.classList.remove("shake-box");
           }, 500);
         });
-        clickedArray.length = 0;
-      }
 
-      moves++;
+        clickedArray.length = 0;
+        moves++;
+      }
     }
 
     document.querySelector(".navbar span").innerHTML = moves;
-  });
-  console.log(cards);
+
+    setTimeout(() => {
+      if (matched === 8) {
+        if (alert("You win!")) {
+        } else window.location.reload();
+      }
+    }, 500);
+  }
 });
