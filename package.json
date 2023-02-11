@@ -1,0 +1,22 @@
+{
+	"name": "memogame",
+	"version": "1.0.0",
+	"description": "simple memory game",
+	"main": "game.js",
+	"scripts": {
+		"start": "live-server"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/visionpl/nta_memogame.git"
+	},
+	"author": "Patryk Wisniewicz",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/visionpl/nta_memogame/issues"
+	},
+	"homepage": "https://github.com/visionpl/nta_memogame#readme",
+	"dependencies": {
+		"live-server": "^1.2.2"
+	}
+}
